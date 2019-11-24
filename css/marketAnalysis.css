@@ -1,0 +1,39 @@
+hr {
+  width: 92.5%;
+}
+
+p, li{
+  margin: 0;
+  font-size: 1vw;
+}
+
+h1 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 3.5vw;
+}
+
+h2 {
+  margin: 0;
+  padding-top: 10px;
+  font-size: 2.25vw;
+}
+
+.divider {
+  margin: 30px;
+}
+
+.image {
+  display: block;
+  width: 30%;
+  height: auto;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 850px) {
+ p, li{
+   font-size: 3vw;
+ }
+}

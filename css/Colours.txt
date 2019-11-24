@@ -1,0 +1,14 @@
+red-ish: 7F241E
+super dark grey (not really): #333
+darker grey: 45403c
+light blue: C3C5C0
+light grey: 6b6863
+really light grey: c4c6c1
+
+NEW BETTER COLOURS
+dark grey: #2c3531
+Turqoise: #116466
+sand: #D9B08C
+Peach: #FFCB9A
+Sky Blue: #D1E8E2
+Paper: #D5D5D5
