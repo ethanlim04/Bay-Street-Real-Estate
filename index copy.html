@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+  
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width">
+
+    <link href="CSS/normalize.css" rel="stylesheet" type="text/css" />
+	  <link href="CSS/login.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/style.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/homepage.css" rel="stylesheet" type="text/css" />
+    
+	  <title>Home | Bay Street Popular Real Estate</title>
+	  <link rel="icon" href="Pictures/ICON.png">
+
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCouj6qVUjdFaMsEJXxEtz5mxkni4ykrw4",
+        authDomain: "bay-street-popular-real-estate.firebaseapp.com",
+        databaseURL: "https://bay-street-popular-real-estate.firebaseio.com",
+        projectId: "bay-street-popular-real-estate",
+        storageBucket: "bay-street-popular-real-estate.appspot.com",
+        messagingSenderId: "299703818288",
+        appId: "1:299703818288:web:e95c4ad31f355bf3e2f5f5"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+  </head>
+
+  <body onload="showSlides(1)">
+    <center>
+      <article id="login-register">
+        <article id="login">
+          <span onclick = 'exit()' class = "userClose">&times</span>
+            <labellog> Email </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input class = 'roform' type="email" placeholder="Email..." id="email_field" />
+            <br>
+            <p></p>
+            <br>
+            <labellog> Password </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input  class = 'roform' type="password" placeholder="Password..." id="password_field" />
+            <br>
+            <p></p>
+            <br>
+            <button class = 'stylebtn' onclick="login()" id = "login_button">Login</button>
+            <p></p>
+            <br>
+            <button class = 'stylebtn' onclick="toregister()" id = "fakeregisterbutton">Register</button>
+            <br>
+          </article>
+    
+          <article id = "register">
+            <span onclick = 'exit()' class = "userClose">&times</span>
+            <labellog> Email </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input class = 'roform' type="email" placeholder="Email..." id="register_email_field" />
+            <br>
+            <p></p>
+            <br>
+            <labellog> Password </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input class = 'roform' type="password" placeholder="Password..." id="register_password_field" />
+            <br>
+            <p></p>
+            <br>
+            <labellog> Confirm Your Password </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input  class = 'roform' type="password" placeholder="Confirm Your Password" id="register_confirm_field"/>
+            <br>
+            <p></p>
+            <br>
+            <button class = 'stylebtn'onclick="register()" id = "real_register_button">Register</button>
+            <br>
+            <p></p>
+            <br>
+            <button class = 'stylebtn' onclick="tologin()" id = "backtologinbutton" >Back To Login</button>
+            <br>
+            <p></p>
+            <br>
+          </article>
+        </article>
+    </center>
+
+      <!--Picture at top-->
+      <article id='toparticle'>
+        <a href='index.html'><img src='Pictures/LOGO.png' id = 'headerimage'></a>
+      </article>
+
+      <!--Nav bar-->
+      <article id = 'navbar'>
+        <a class="active" style = "cursor: pointer;">Home</a>
+        <a href='PropListings.html'>Property Listings</a>
+        <a href='MarketAnalysis.html'>Market Analysis</a>
+        <a style = 'display:none;' id = 'bookmarksTab' href='Bookmarks.html'>My Bookmarks</a>
+        <a id = 'loginbtn' style = "float: right; float: top;" onclick = "tologin()">Login</a>
+        <a id = 'logoutbtn' style = "float: right; float: top; display: none;" onclick = "logout()">Logout</a>
+      </article>
+
+    <article class="slideshow-container">
+
+      <article class="mySlides fade">
+        <article class="numbertext" style = 'color:black'>1 / 5</article>
+        <img src="Pictures/slide1.png" style="width:100%">
+      </article>
+
+      <article class="mySlides fade">
+        <article class="numbertext" style = 'color:black'>2 / 5</article>
+        <img src="Pictures/slide2.png" style="width:100%;">
+      </article>
+
+      <article class="mySlides fade">
+        <article class="numbertext" style = 'color:black'>3 / 5</article>
+        <img src="Pictures/slide3.png" style="width:100%">
+      </article>
+      
+      <article class="mySlides fade">
+        <article class="numbertext" style = 'color:white'>4 / 5</article>
+        <img src="Pictures/slide4.png" style="width:100%">
+      </article>
+
+
+      <article class="mySlides fade">
+        <article class="numbertext" style = 'color:black'>5 / 5</article>
+        <img src="Pictures/slide5.png" style="width:100%">
+      </article>
+
+      <!-- Next and previous buttons -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+      <article class="centered search">
+        <h1 id = "search_header">Thousands of listings, 1 perfect condo, right at your fingertips.</h1>
+        <input id="search" class="centered" type="search" placeholder = "Start your search for a perfect condo here"/>
+        <button id="search_btn">Search</button>
+      </article>
+
+      <article class="bottom_centre">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+      </article>
+    </article>
+
+    <article class="row">
+      <article class="column">
+        <h2>Expert Market Analysis</h2>
+        <hr>
+        <p style = "padding-top: 30px;">Our experts give to the lowdown on today's housing market, and insider information to help you buy and sell effectively. Get all the up-to-date information you need, when you need it.</p>
+        <br/>
+        <p><a class="link" href = "MarketAnalysis.html">Learn More ></a></p>
+      </article>
+      <article class="column">
+        <h2>Property Listings</h2>
+        <hr>
+        <p style = "padding-top: 30px;">Thousands of listings, right at your fingertips. With sofisticated filters, search algotithms, and more, we can help you find the perfect condo that suits your needs.</p>
+        <br/>
+        <p><a class = "link" href = "PropListings.html">Learn More ></a></p>
+      </article>
+      <article class="column" id='sign_up_now'>
+        <h2>Join Today</h2>
+        <hr>
+        <p style = "padding-top: 30px;">Join thousands of satisfied customers and get exclusive features, all for free. </p>
+        <br/>
+        <p><a class = "link" onclick = "toregister()">Learn More ></a></p>
+      </article>
+      <article class="column" id='find_an_agent'>
+        <h2>Find an Agent</h2>
+        <hr>
+        <p style = "padding-top: 30px;">Need help buying or selling? Our agents have your backs. Find an agent that's right for you today.</p>
+        <br/>
+        <p><a class = "link" onclick = "toregister()">Learn More ></a></p>
+      </article>
+    </article>
+
+    
+
+    <script src="JS/auth.js"></script>
+    <script src="JS/homepage.js"></script>
+    <script src="JS/script.js"></script>
+  </body>
+
+  <footer>
+    <p style = "padding-top: 30px;">Need help? we're here for you!</p>
+    <p>Email us: <a style = "color: #116466; "href="baystreetpopular@gmail.com">baystreetpopular@gmail.com</a>.</p>
+  </footer>
+</html>

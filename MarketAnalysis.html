@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link href="CSS/style.css" rel="stylesheet" type="text/css" />
+  <link href="CSS/marketAnalysis.css" rel="stylesheet" type="text/css" />
+  <link href="CSS/login.css" rel="stylesheet" type="text/css" />
+	<title>Market Analysis: Bay Street Popular Real Estate</title>
+	<link rel="icon" href="Pictures/ICON.png">
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-database.js">
+    </script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCouj6qVUjdFaMsEJXxEtz5mxkni4ykrw4",
+        authDomain: "bay-street-popular-real-estate.firebaseapp.com",
+        databaseURL: "https://bay-street-popular-real-estate.firebaseio.com",
+        projectId: "bay-street-popular-real-estate",
+        storageBucket: "bay-street-popular-real-estate.appspot.com",
+        messagingSenderId: "299703818288",
+        appId: "1:299703818288:web:e95c4ad31f355bf3e2f5f5"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+
+<body>
+	<!--Picture at top-->
+	<article id='toparticle'>
+		<a href='index.html'><img src='Pictures/LOGO.png' id = 'headerimage'></a>
+  </article>
+
+    <!--Nav bar-->
+    <article id = 'navbar'>
+      <a href="index.html">Home</a>
+      <a href='PropListings.html'>Property Listings</a>
+      <a class="active" style = "cursor: pointer;">Market Analysis</a>
+      <a style = 'display:none;' id = 'bookmarksTab' href='Bookmarks.html'>My Bookmarks</a>
+      <a id = 'loginbtn' style = "float: right; float: top;" href="index.html">Login</a>
+      <a id = 'logoutbtn' style = "float: right; float: top; display: none;" onclick = "logout()">Logout</a>
+    </article>
+
+    <center>
+      <article id="login-register">
+        <article id="login">
+          <span onclick = 'exit()' class = "userClose">&times</span>
+            <labellog> Email </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input class = 'roform' type="email" placeholder="Email..." id="email_field" />
+            <br>
+            <p></p>
+            <br>
+            <labellog> Password </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input  class = 'roform' type="password" placeholder="Password..." id="password_field" />
+            <br>
+            <p></p>
+            <br>
+            <button class = 'stylebtn' onclick="login()" id = "login_button">Login</button>
+            <p></p>
+            <br>
+            <button class = 'stylebtn' onclick="toregister()" id = "fakeregisterbutton">Register</button>
+            <br>
+          </article>
+    
+          <article id = "register">
+            <span onclick = 'exit()' class = "userClose">&times</span>
+            <labellog> Email </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input class = 'roform' type="email" placeholder="Email..." id="register_email_field" />
+            <br>
+            <p></p>
+            <br>
+            <labellog> Password </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input class = 'roform' type="password" placeholder="Password..." id="register_password_field" />
+            <br>
+            <p></p>
+            <br>
+            <labellog> Confirm Your Password </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input  class = 'roform' type="password" placeholder="Confirm Your Password" id="register_confirm_field"/>
+            <br>
+            <p></p>
+            <br>
+            <button class = 'stylebtn'onclick="register()" id = "real_register_button">Register</button>
+            <br>
+            <p></p>
+            <br>
+            <button class = 'stylebtn' onclick="tologin()" id = "backtologinbutton" >Back To Login</button>
+            <br>
+            <p></p>
+            <br>
+          </article>
+        </article>
+    </center>
+
+    <!-- template for new "post"
+    <article class = "post">
+      <h1>Post Title</h1>
+      <p>Date</p>
+      <p>Authour</p>
+      <hr>
+      <img src = "URL or file directory" class = "image"/>
+      <article class = "content">
+        <h2>Subtitle</h2>
+        <p>Paragraph</p>
+        <h2>Subtitle</h2>
+        <p>Paragraph</p>
+      </article>
+    </article>
+    <article class = "divider"></article>
+    -->
+
+    <article class = "post">
+      <h1>Seller Analysis</h1>
+      <p>November 24th, 2019</p>
+      <p>Tina Xu</p>
+      <hr>
+      <img src = "https://lh5.googleusercontent.com/zyzLv9Wy2I3apuB6qnkH4E1eVRFJdIt4TGqS60A7Fa9EbUdKGoMXw6m-2fMnyAtjZJa5JW-7fNFRMko4micU=w1920-h975-rw" class = "image"/>
+      <article class = "content">
+        <h2>Prepare to Sell</h2>
+        <p><strong>When to Sell</strong></p>
+        <ol type = "a">
+          <li><u>Seller’s market:</u> When lots of people are looking for homes but not many are for sale
+          <img src = "https://lh3.google.com/u/0/d/1flNFZsSyS_Pb2oA8oSyQL1N9QDOHp0tZ=w1920-h975-iv1" class = "image"/></li>
+          <li><u>Buyer’s market:</u> When there are lots of homes for sale and not many people buying them
+          <img src = "https://lh3.google.com/u/0/d/1L5nRYkcvgpT-9E44h7ieLF5uyOThIIbV=w1108-h975-iv1" class = "image"/></li>
+          <li><u>Seasonality:</u> winter sales tend to be slower in most markets while spring sales typically speed up
+          <img src = "https://lh3.google.com/u/0/d/1BilYZS7NHdbrL_aBjlRidqsEZcINjO-0=w1108-h975-iv1" class = "image"/></li>
+        </ol>
+        <p><strong>Manage Your Money</strong></p>
+        <p>Before the offers start rolling in, be prepared for the large amounts of money that will pass through your hands. However, don’t forget to take these things into consideration</p>
+        <ul>
+          <li><u>Discharge Mortgage:</u> this refers to using the proceeds from the sale of your home to discharge or pay off your current mortgage. In an open mortgage, you can pay it all off without any penalties. If you have a closed mortgage, be prepared to pay a penalty.</li>
+          <li><u>Portable Mortgage:</u> A portable mortgage means you can take your mortgage money with you and buy a new home, without penalty.</li>
+          <li><u>Capital gains tax:</u> If you had tenants living in part of your home, such as the basement, you’ll pay capital gains tax on a portion of your profits. You may also owe capital gains tax if you’re selling a vacation or investment property</li>
+          <li><i>Tip: Always consult a professional financial advisor before making personal financial decisions.</i></li>
+        </ul>
+        <img src = "https://lh3.google.com/u/0/d/1E0NIqGnjYu7t4KhyL1IdrzxNav44W6nG=w1108-h975-iv1" class = "image"/>
+        <h2>Listing Your Home</h2>
+        <ol>
+          <li><u>Determine Your Home’s Asking Price:</u> Now it is time to find a realtor that can help you enter the market at the right time, analyze market trends and ensure that you are buying or selling your property at a good price. </li>
+          <ol type = "i">
+            <li><u>Set the right price:</u> when setting the price for your home, be sure to set it wisely with careful considerations. If you set your price too low, you could miss out on thousands of dollars, however, if your asking price is too high, you could scare away willing buyers. Keep in mind, you can always consult a professional financial advisor before making it.</li>
+            <li><u>Let your realtor help you:</u> your realtor is always a big help, they understands what’s happening in your local market as well as industry trends that may impact how you sell your house.</li>
+          </ol>
+          <li>Sign a Listing Agreement: Signing a listing agreement officially gives your realtor the green light to start selling your home. The agreement serves three main purposes:</li>
+          <ol>
+            <li>It defines your relationship, including the limits of your Realtor’s authority.</li>
+            <li>It provides detailed information about your home which can be placed on a real estate board’s MLS® System.</li>
+            <li>It forms the basis for drafting offers on your home.</li>
+          </ol>
+        </ol>
+        <h2>Market Your Home</h2>
+        <p>By working with your realtor, you can maximize your property’s visibility and traffic online. A realtor can highlight your home’s best qualities, including professional photos, video tours and more.</p>
+        <ul>
+          <li><u>The for sale sign:</u> Despite our leaps in technology, the for sale sign continues to be an effective way to advertise. Anybody responding to your sign is a solid lead because they’ve seen your home with their own eyes</li>
+          <li><u>Traditional Media:</u> classified ads in the newspaper, ads in real estate publications as well as a flyer</li>
+          <li><u>Internet promotions:</u> advertise your home on different real estate websites can help people know your sale better, and take a better look</li>
+          <li><u>Open house for buyers:</u> Open house is always a good choice, many buyers want to take a close and real look at your house, and see how it feels. Having a close look at the house also helps buyer determine their decisions, whether buy it or not, or if they like it or not</li>
+        </ul>
+        <h2>The Offer</h2>
+        <img src = "https://lh3.google.com/u/0/d/1qPo6Fqoz55H5kOumGF1rNNh_hOOm6PYk=w1108-h975-iv1" class = "image"/>
+        <ol>
+          <li><u>Find a lawyer to your team:</u> When selling, it’s essential to have a lawyer handle all the various legal documents that change hands. Your realtor can also give you the name(s) of experienced real estate lawyers in your area. Your lawyer will review important documents that require your signature. The most critical of these is the “offer” submitted by the buyer.</li>
+          <li><u>Receiving an offer:</u> negotiating a property sale is considered one of the most intimidating aspects of the home buying process. A determined REALTOR® is a force to be reckoned with when finalizing a property sale; experience and familiarity of local markets can give realtors a clear advantage to represent your best interest. Your realtor can walk you through the process, While the buyer(s) won’t be there in person, their realtor might provide the offer in person. Your eyes will be immediately drawn to the price. Your realtor can provide advice before any judgments are made.</li>
+          <li><u>Responding to an offer:</u> You may want to ask your realtor for advice on the merits of the offer or have some private time to discuss things with your partner. Here are three options when responding to an offer: You got the price you were hoping for, maybe even more. The closing date looks good and there are no conditions.</li>
+          <ol type = "a">
+            <li>You can accept the offer: You got the price you were hoping for, maybe even more. The closing date looks good and there are no conditions.</li>
+            <li>You can reject the offer: This offer isn’t even close so no counter offer.</li>
+            <li>You can “sign back” or provide a counter offer: Your realtor can help with the delicate art of negotiation by “signing back”. Some of the most common reasons for a sign back include: you want more money, you want to change the closing date, there may be some undesirable conditions on the offer</li>
+          </ol>
+        </ol>
+        <h2>Close the Sale</h2>
+        <img src = "https://lh3.google.com/u/0/d/1l4bEe1ebYqwioyFxKNv4IcovGpwh17iw=w1108-h975-iv1" class = "image">/
+        <p> Before your house is truly sold, it’s time for the vital final steps known as “closing”. Your realtor and lawyer will take care of all complicated and time-consuming legal maneuvers.</p>
+        <ol>
+          <li><u>FINTRAC:</u> your realtors will advise you of reporting requirements by FINTRAC, the federal agency responsible for administering Canada’s Money Laundering and Terrorist Financing legislation and regulations.</li>
+          <li>Here are some important steps in closing sale:</li>
+          <ol type = "a">
+            <li>Your lawyer will be advised that an agreement has been signed. Make sure your lawyer is ready to close the transaction.</li>
+            <li>immediately begin satisfying any conditions of the agreement requiring action on your part before the set date of completion.</li>
+            <li>Notify your lawyer and lending institution if the buyer is assuming your mortgage.</li>
+            <li>Contact the utilities, telephone and cable companies about transferring or removing service. Your lawyer will often handle the transfer of utilities.</li>
+            <li>Call your insurance agent and arrange cancellation or transfer of your homeowner’s insurance.</li>
+            <li>Contact a moving company to arrange your move on or prior to closing date.</li>
+            <li><strong>NOW OFF YOU GO!</strong></li>
+          </ol>
+        </ol>
+      </article>
+    </article>
+    <article class = "divider"></article>
+
+    <article class = "post">
+      <h1>Buyer Analysis</h1>
+      <p>November 22nd, 2019</p>
+      <p>Tina Xu</p>
+      <hr>
+      <img src = "https://www.clipartwiki.com/clipimg/detail/34-349933_stock-market-marketing-icon-research-clipart-png.png" class = "image"/>
+      <article class = "content">
+        <p>In this case, we are analyzing of how would a buyer be able to get the best out of everything</p>
+        <h2>Preparation:</h2>
+        <p>Buying a home is not an easy thing, it is complex and takes time, so here are the three concepts that you should be prepared of:
+          <ul>
+            <li>First, <u>Make sure that you are ready to purchase a home.</u> Is your bank account ready? Check it wisely and consider if you have enough money to afford a home before purchasing it. Buying a home is likely the most significant and largest purchase of your life, so this cannot be done without careful considerations, It’s ideal to have saved up some money and manage any debt. Another thing is that is it the perfect time to buy a house? Markets go up and down, even the most informed experts can’t accurately predict when a market will peak or bottom out. If you’re buying a home as a long-term investment (and for long-term enjoyment), you should be protected from short-term changes in the market. Instead, focus on picking a home that meets your and your family’s needs. </li>
+            <li>Secondly, <u>decide what’s the best fit for you.</u> Whether you’re new or native to a neighborhood, finding a realtor can help you navigate homes in the areas that best suit your needs and lifestyle.  Take a minute to reflect on these popular housing options to help decide what fits you best. First of all, most importantly, the location. Choose the best location that suits you, you should consider the convenience level, for example how far it is from your workplace, school, etc. Secondly, what type of home are you looking for, contact the your agent to narrow down a type of home to meet your needs. Types of homes includes such as <strong>Single-family detached</strong> (single individual house not attached to any homes next to it), <strong>Semi-detached or linked</strong> (Two distinct houses with separate owners and lots that are built side-by-side and share a common wall), <strong>Duplex</strong> (A building on a single lot but that is zoned for two families), <strong>Town house</strong> (Also known as terrace or row housing, they’re identified as homes featuring a common style and joined in a row. They usually share common walls on both sides) OR <strong>Condo</strong>, With a condo, you own 100% of your unit and a share of the common areas. Common areas include the necessary plumbing, electrical systems, hallways and elevators. They may also include amenities like a private gym or pool. On top of the mortgage and property taxes, condo owners also pay a monthly fee to operate and maintain the common areas. Condos would be the best choice if you are single and individual, buying a condo can reduce your work and would be convenient because most condos are in the city center. Furthermore, when choosing those types of homes, you should consider of how much space you really need, and is the type you want enough and suits you the best?</li>
+            <li>Lastly, <u>Sell Your Current Home.</u> If you’re not planning to own two homes at the same time, you’ll need to sell the one you have now. So, do you buy or sell first? Many people are able to time their sale and purchase to happen on the same “closing date,” making their purchase offer “conditional” on the sale of their current home or by extending the “closing period” to give more time to find the perfect home. Decide the best time to enter the market, analyze local market trends to set an agreeable and appropriate price and help promote your home to potential buyers. Now I will be featuring some terms: Seller’s market, this is when lots of people are looking for homes but there aren’t many for sale, so basically demand higher than supplies. So in this case, it would be a great choice to put out your home for sell, because we know that when demand is higher than supply, people tend to go for it with a higher price, which maximized your profit. And if there is a seller’s market, there will definitely be a buyer’s market, and this is the opposite. When there are many homes for sale but not enough people buying them, which is supplies higher than demand. So when this happens, it is the time to purchase a  home,  because when they have too much supplies, people tend to lower the price, and so this way you can get the best out of a lower price. Last of all, Seasonality, this refers to the fact that winter sales tend to be slower in most markets while spring sales typically speed up. And it is reasonable since people wouldn’t really move during winter, it’s cold and hard to move, so most people would purchase much more in spring, summer than winter. </li>
+          </ul>
+        </p>
+        <h2>Plan Your Finances:</h2>
+        <p>Buying a home is a big deal; it’s probably the largest purchase you’ll ever make. Being prepared means also understanding that expenses go beyond purchase price. To secure your new home, you’ll likely need to arrange for a mortgage but before you do, take a look at how much you can afford each month. And there are two types of lending principles, <strong>Gross Debt Service Ratio (GDSR)</strong>, this lending principle simply states that your monthly housing costs should not exceed 32% of your gross (before taxes) monthly family income. And <strong>Total Debt Service Ratio (TDSR)</strong>, this lending principle summarizes that your monthly housing cost and payments on all other debts (like loans, credit cards and lease payments) should not exceed 40% of your gross monthly income.
+        </p>
+        <img src = "https://lh6.googleusercontent.com/qHICwo5TNBrTILY8fQ_ejUxFBiLE3pTiUra_oeFmSr0_VmCefUqdlcs7bCculjIxlajynks4zn61tTNapBhN=w1920-h975" class = "image"/>
+        <p>After that, you might want to consider arranging a mortgage if needed. Since you may not have hundreds of thousands of dollars at your immediate disposal, a mortgage is a loan that can help you cover the cost of buying a home. </p>
+        <ol>
+          <li><u>Get started by finding a bank:</u> there are hundreds of banks, credit unions and other lenders out there who would love your monthly mortgage payments</li>
+          <li><u>Call a mortgage broker:</u> Mortgage brokers are another great resource. Their job is to find low lending rates and they usually don’t get paid unless you sign a mortgage through them – meaning they’re highly motivated to get you the best deal.</li>
+          <li><u>Mortgage takeover:</u> Often, you can take over the seller’s mortgage. This is a great option if the seller is locked into a lower interest rate than you can get right now.</li>
+          <li><u>Amortization:</u> Amortization refers to the length of time it will take to pay off the whole mortgage, often as long as 25 years. The longer your amortization, the lower your monthly payments, but the more you pay in interest over time.</li>
+          <li><u>Down payment:</u> This refers to the initial up-front portion you pay against your home purchase. A larger down payment means a smaller mortgage (and less debt).</li>
+          <li><u>HOW TO APPLY TO A MORTGAGE</u> (here’s the concepts should be followed):</li>
+          <ol type = "a">
+            <li>Letter of employment (including your position, your salary or rate of pay and how many years you’ve been with the company)</li>
+            <li>List of your assets (your car, stocks, bonds, GICs, etc.)</li>
+            <li>List of your liabilities (car payments, student loans, credit card debt, etc.)</li>
+            <li>Social Insurance Number</li>
+            <li>Your chequing account number</li>
+            <li>Your lawyer’s contact information</li>
+            <li>Information about the house you want to buy</li>
+          </ol>
+        </ol>
+        <h2>View properties:</h2>
+        <ol>
+          <li>Find a right realtor, a good realtor can review your wants and needs to help you determine your price range, as well as answer questions about the markets you’re interested in and help you compare homes and neighborhoods and more.</li>
+          <li>Now it is the time to see what’s out there, there are various ways to find the perfect fit for you such as by visiting different real estate websites, visit open houses, or check out real estate ads on news paper etc.</li>
+        </ol>
+        <h2>Make an Offer</h2>
+        <p>When you found your new home, you’d have to make a successful offer, ones that the seller will accept. And your realtor can prepare the offer for you. Here are some terms you’ll see:</p>
+        <ul>
+          <li>Buyer (which is you)</li>
+          <li>Seller (the person selling the house to you)</li>
+          <li>Purchase Price (The most important number: what you’re willing to pay for the home. And let’s hope the seller goes for it.)</li>
+          <li>Deposit (A cheque you write to the seller or the seller’s broker, and the amount is up to you)</li>
+          <li>Submitting the offer (You’ve signed on the dotted line and your realtor has provided your offer to the seller)</li>
+          <li>When the offers are sent, the home owner can choose to accept or reject. If accepted, congratulations! You’ve achieved what you deserved, but if not, do not worry, It’s not common for an offer to be completely rejected, meaning you still have time to negotiate. However, if it was fully rejected, your realtor can investigate why and see if there was a misunderstanding.</li>
+          <li>The seller “signed back” or “countered” your offer. The seller wants to alter some part of your offer (most likely the price). The seller will cross out the price on your offer and write a higher number, or delete or alter some conditions. Now it’s your turn to sign back with any additional changes or your acceptance of the counter offer.</li>
+          <li>Chattels and fixtures (Be sure you know what is included with the house. If you’re expecting the seller to leave behind the appliances, draperies or light fixtures, be sure to include that in your offer)</li>
+          <li>Irrevocability of the offer (The length of time you give the seller to consider your offer. Usually less than 48 hours)</li>
+          <li>Completion date (the date on which the seller must vacate the property and the buyer will get the keys and can move in</li>
+        </ul>
+        <img src = "https://lh5.googleusercontent.com/7iMHR9AqqTgTVe_F3WlXKwXY1KHYTFTGeaerjGmuRiopNsOo7t_zEWLgBKI_gvFAPaOwhWp1YCykDQtx3r3e=w1920-h975" class = "image"/>
+        <h2>Close the Purchase</h2>
+        <ol>
+          <li><u>Find a lawyer:</u> Buying a home involves piles of legal documents. You need someone to translate the ”legalese” and ensure your best interests are protected. There are many legal steps to transferring ownership of land from one person to another. Even if pitfalls like fraud, government legislation, zoning issues or unpaid taxes don’t come up, your lawyer will help make the legal transfer of the home as smooth as possible. A typical transfer of title will require two weeks to complete.
+          <i>Tip: Be sure to ask your lawyer how they structure their fees and get an estimate of the costs you can expect.</i></li>
+          <li><u>Close the purchase:</u> After the offer has been, you still have to close the purchase, but your realtor and lawyer will do most of the closing work. But here is a checklist you can follow up on:</li>
+          <ol type = "1">
+            <li>Immediately begin satisfying any conditions of the agreement that require action on your part.</li>
+            <li>Ask your lawyer to begin searching title to the property, keep in mind, this can take a while.</li>
+            <li>Before closing, arrange your homeowner’s insurance to kick in on your closing date. Your insurance broker will give you a “binder letter” certifying that you’re covered. You can’t get a mortgage without this letter.</li>
+            <li>Contact your lender and have them finalize your mortgage documents. Make sure your lawyer reviews them before you sign.</li>
+            <li>Your lawyer will transfer essential utilities like hydro and water but you’ll have to make sure telephone and cable companies switch their services to your new address.</li>
+            <li>If you rent, be sure to give the required notice to your landlord or sublease your apartment.</li>
+            <li><strong>NOW YOU CAN START MOVING TO YOUR NEW HOME!</strong></li>
+          </ol>
+        </ol>
+      </article>
+    </article>
+    <article class = "divider"></article>
+
+    <article class = "post">
+      <h1>5 Tips for Moving Into a Toronto Condo</h1>
+      <p>November 20th, 2019</p>
+      <p>Luke Zhang</p>
+      <hr>
+      <img src = "http://d2kcmk0r62r1qk.cloudfront.net/imageSponsors/xlarge/2013_04_22_04_03_01_museecondos_rendering.jpg" class = "image"/>
+      <article class = "content">
+        <p>Toronto has more condominiums under construction than any other city in North America.</p>
+        <h2>1. Plan Out Your Space</h2>
+        <p>Take a look at the floorplan and figure out what should go where. Doing so will help you figure out what items you shouldn’t be moving at all and just leave behind.</p>
+        <h2>2. Buying furniture</h2>
+        <p>These days you can find furniture that fits perfectly into smaller spaces. Furniture that folds, swivels, collapses, etc. – bring your floorplan to the store to plan out the space.</p>
+        <h2>3. Plants & windows</h2>
+        <p>Based on where your windows are you may needs to have different types of plants. For a balcony you may need different planters.</p>
+        <h2>4. Consider the Amenities</h2>
+        <p>Unlike a house these condos usually have a lot of amenities and so you should find out what is available at your new place. Maybe it already has some things that you don’t need to duplicate. For example, if there is a gym then maybe you shouldn’t fill your space with your existing gym equipment.</p>
+        <h2>5. Moving day procedures</h2>
+        <p>Each develop has different rules so you should contact them early to find out how to schedule the elevator in advance and any other co-ordination tha may be needed.</p>
+      </article>
+    </article>
+    <article class = "divider"></article>
+
+    <script src="JS/auth.js"></script>
+    <srcipt src="JS/marketAnalysis.js"></srcipt>
+    <srcipt src="JS/srcipt.js"></srcipt>
+    <srcipt src="JS/userdata.js"></srcipt>
+  </body>
+  <footer>
+    <p style = "padding-top: 30px;">Need help? we're here for you!</p>
+    <p>Email us: <a style = "color: #116466; "href="baystreetpopular@gmail.com">baystreetpopular@gmail.com</a>.</p>
+  </footer>
+</html>

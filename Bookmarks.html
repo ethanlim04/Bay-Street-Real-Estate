@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link href="CSS/style.css" rel="stylesheet" type="text/css" />
+  <link href="CSS/login.css" rel="stylesheet" type="text/css" />
+  <link href="CSS/PropListings.css" rel="stylesheet" type="text/css" />
+	<title>Property Listings: Bay Street Popular Real Estate</title>
+	<link rel="icon" href="Pictures/ICON.png">
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-firestore.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCouj6qVUjdFaMsEJXxEtz5mxkni4ykrw4",
+        authDomain: "bay-street-popular-real-estate.firebaseapp.com",
+        databaseURL: "https://bay-street-popular-real-estate.firebaseio.com",
+        projectId: "bay-street-popular-real-estate",
+        storageBucket: "bay-street-popular-real-estate.appspot.com",
+        messagingSenderId: "299703818288",
+        appId: "1:299703818288:web:e95c4ad31f355bf3e2f5f5"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+
+
+<body>
+	<!--Picture at top-->
+	<article id='toparticle'>
+		<a href='index.html'><img src='Pictures/LOGO.png' id = 'headerimage'></a>
+  </article>
+
+    <!--Nav bar-->
+    <article id = 'navbar'>
+      <a href="index.html">Home</a>
+      <a href='PropListings.html'>Property Listings</a>
+      <a href='MarketAnalysis.html'>Market Analysis</a>
+      <a class="active" style = 'cursor: pointer;' id = 'bookmarksTab'>My Bookmarks</a>
+      <a id = 'loginbtn' style = "float: right; float: top;" href="index.html">Login</a>
+      <a id = 'logoutbtn' style = "float: right; float: top; display: none;" onclick = "logout()" href = 'index.html'>Logout</a>
+    </article>
+
+    <center>
+      <article id="login-register">
+        <article id="login">
+          <span onclick = 'exit()' class = "userClose">&times</span>
+            <labellog> Email </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input class = 'roform' type="email" placeholder="Email..." id="email_field" />
+            <br>
+            <p></p>
+            <br>
+            <labellog> Password </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input  class = 'roform' type="password" placeholder="Password..." id="password_field" />
+            <br>
+            <p></p>
+            <br>
+            <button class = 'stylebtn' onclick="login()" id = "login_button">Login</button>
+            <p></p>
+            <br>
+            <button class = 'stylebtn' onclick="toregister()" id = "fakeregisterbutton">Register</button>
+            <br>
+          </article>
+    
+          <article id = "register">
+            <span onclick = 'exit()' class = "userClose">&times</span>
+            <labellog> Email </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input class = 'roform' type="email" placeholder="Email..." id="register_email_field" />
+            <br>
+            <p></p>
+            <br>
+            <labellog> Password </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input class = 'roform' type="password" placeholder="Password..." id="register_password_field" />
+            <br>
+            <p></p>
+            <br>
+            <labellog> Confirm Your Password </labellog>
+            <br>
+            <p></p>
+            <br>
+            <input  class = 'roform' type="password" placeholder="Confirm Your Password" id="register_confirm_field"/>
+            <br>
+            <p></p>
+            <br>
+            <button class = 'stylebtn'onclick="register()" id = "real_register_button">Register</button>
+            <br>
+            <p></p>
+            <br>
+            <button class = 'stylebtn' onclick="tologin()" id = "backtologinbutton" >Back To Login</button>
+            <br>
+            <p></p>
+            <br>
+          </article>
+        </article>
+    </center>
+
+    <article class = "flex-container" id = "main-container">
+      <article class="row"><article class="column left"><img class="img" src="http://www.starioncondos.com/wp-content/uploads/2017/07/DE2.jpg"></article><article class="column right"><img class="bookmark" onmouseover="turn_red(this)" onmouseout="turn_transparent(this)" onclick="bookmark(3)" src="Pictures/Bookmark.png"><h1 onclick="openPage(3)">ASSIGNMENT SALE: 1 BEDROOM WITH TERRACE AT DUEAST CONDOS</h1><p>DuEast Boutique East Residence is a new preconstruction condo development by Daniels located at 34 Tubman Street in Toronto (Dundas/River).</p><p>DuEast Boutique East Residence will be 11 storeys&nbsp;with a total of 119 condo units.&nbsp;Estimated completion date is set for Spring 2020.</p></article></article>
+    </article>
+
+    <script src="JS/bookmarks.js"></script>
+    <script src="JS/auth.js"></script>
+    <script src="JS/script.js"></script>
+    <script src="JS/userdata.js"></script>
+  </body>
+  <footer>
+    <p style = "padding-top: 30px;">Need help? we're here for you!</p>
+    <p>Email us: <a style = "color: #116466; "href="baystreetpopular@gmail.com">baystreetpopular@gmail.com</a>.</p>
+  </footer>
+</html>
