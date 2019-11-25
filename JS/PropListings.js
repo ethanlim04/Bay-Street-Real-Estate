@@ -38,8 +38,8 @@ function gotData(data){
     let nameKey = Object.keys(houseIndex['name']);
     let specs;
     try {
-    let specsKey = Object.keys(houseIndex['specs']);
-    let specs = houseIndex['specs'][specsKey];
+      let specsKey = Object.keys(houseIndex['specs']);
+      let specs = houseIndex['specs'][specsKey];
     }
     catch(err) {
       let specsKey = null;
